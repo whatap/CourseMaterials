@@ -232,6 +232,17 @@ assertEqual "3.0.1" "$(echo $RESPONSE | jq -r .openapi)"
 assertEqual "http://$HOST:$PORT" "$(echo $RESPONSE | jq -r .servers[].url)"
 assertCurl 200 "curl -s  http://$HOST:$PORT/openapi/v3/api-docs.yaml"
 
+# Call Randome ID (1~1000)
+echo "Testing random productId between 1~10000:"
+for i in {1..5}
+do
+  RANDOM_ID=$((RANDOM % 10000 + 1))
+  echo "[$i] Calling http://$HOST:$PORT/product-composite/$RANDOM_ID"
+  response=$(curl -s -w "\nHTTP Status: %{http_code}\n" http://$HOST:$PORT/product-composite/$RANDOM_ID)
+  echo "$response"
+  echo "-------------------------"
+done
+
 if [[ $@ == *"stop"* ]]
 then
     echo "We are done, stopping the test environment..."
