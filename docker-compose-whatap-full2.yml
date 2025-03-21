@@ -1,0 +1,143 @@
+version: '2.1'
+
+services:
+  product:
+    build: microservices/product-service
+    mem_limit: 512m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker,streaming_partitioned,streaming_instance_0,kafka
+      - JAVA_TOOL_OPTIONS=-javaagent:/app/whatap/whatap.agent-2.2.54.jar --add-opens=java.base/java.lang=ALL-UNNAMED -Dwhatap.onode=docker-compose-node -Dwhatap.okind=product-service -Dwhatap.name=product-service-{ip2}-{ip3}
+    volumes:
+      - type: bind
+        source: ./whatap
+        target: /app/whatap
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      kafka:
+        condition: service_started
+
+  recommendation:
+    build: microservices/recommendation-service
+    mem_limit: 512m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker,streaming_partitioned,streaming_instance_0,kafka
+      - JAVA_TOOL_OPTIONS=-javaagent:/app/whatap/whatap.agent-2.2.54.jar --add-opens=java.base/java.lang=ALL-UNNAMED -Dwhatap.onode=docker-compose-node -Dwhatap.okind=recommendation-service -Dwhatap.name=recommendation-service-{ip2}-{ip3}
+    volumes:
+      - type: bind
+        source: ./whatap
+        target: /app/whatap
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      kafka:
+        condition: service_started
+
+  review:
+    build: microservices/review-service
+    mem_limit: 512m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker,streaming_partitioned,streaming_instance_0,kafka
+      - JAVA_TOOL_OPTIONS=-javaagent:/app/whatap/whatap.agent-2.2.54.jar --add-opens=java.base/java.lang=ALL-UNNAMED -Dwhatap.onode=docker-compose-node -Dwhatap.okind=review-service -Dwhatap.name=review-service-{ip2}-{ip3}
+    volumes:
+      - type: bind
+        source: ./whatap
+        target: /app/whatap
+    depends_on:
+      mysql:
+        condition: service_healthy
+      kafka:
+        condition: service_started
+
+  product-composite:
+    build: microservices/product-composite-service
+    mem_limit: 512m
+    environment:
+      - SPRING_PROFILES_ACT,IVE=docker,streaming_partitioned,kafka
+      - JAVA_TOOL_OPTIONS=-javaagent:/app/whatap/whatap.agent-2.2.54.jar --add-opens=java.base/java.lang=ALL-UNNAMED -Dwhatap.onode=docker-compose-node -Dwhatap.okind=product-composite-service -Dwhatap.name=product-composite-service-{ip2}-{ip3}
+    volumes:
+      - type: bind
+        source: ./whatap
+        target: /app/whatap
+    depends_on:
+      kafka:
+        condition: service_started
+
+  mongodb:
+    image: mongo:4.4.2
+    mem_limit: 512m
+    ports:
+      - "27017:27017"
+    command: mongod
+    healthcheck:
+      test: "mongo --eval 'db.stats().ok'"
+      interval: 5s
+      timeout: 2s
+      retries: 60
+
+  mysql:
+    image: mysql:5.7.32
+    mem_limit: 512m
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpwd
+      - MYSQL_DATABASE=review-db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pwd
+    healthcheck:
+      test: "/usr/bin/mysql --user=user --password=pwd --execute \"SHOW DATABASES;\""
+      interval: 5s
+      timeout: 2s
+      retries: 60
+
+  kafka:
+    image: wurstmeister/kafka
+    mem_limit: 512m
+    ports:
+      - "9092:9092"
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=kafka
+      - KAFKA_ADVERTISED_PORT=9092
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+    volumes:
+      - type: bind
+        source: ./whatap
+        target: /app/whatap
+    depends_on:
+      - zookeeper
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    mem_limit: 512m
+    ports:
+      - "2181:2181"
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=zookeeper
+    volumes:
+      - type: bind
+        source: ./whatap
+        target: /app/whatap
+
+  eureka:
+    build: spring-cloud/eureka-server
+    mem_limit: 512m
+    environment:
+      - JAVA_TOOL_OPTIONS=-javaagent:/app/whatap/whatap.agent-2.2.54.jar --add-opens=java.base/java.lang=ALL-UNNAMED -Dwhatap.onode=docker-compose-node -Dwhatap.okind=eureka-server -Dwhatap.name=eureka-server-{ip2}-{ip3}
+    volumes:
+      - type: bind
+        source: ./whatap
+        target: /app/whatap
+
+  gateway:
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - JAVA_TOOL_OPTIONS=-javaagent:/app/whatap/whatap.agent-2.2.54.jar --add-opens=java.base/java.lang=ALL-UNNAMED -Dwhatap.onode=docker-compose-node -Dwhatap.okind=gateway -Dwhatap.name=gateway-{ip2}-{ip3}
+    volumes:
+      - type: bind
+        source: ./whatap
+        target: /app/whatap
+    build: spring-cloud/gateway
+    mem_limit: 512m
+    ports:
+      - "8080:8080"
