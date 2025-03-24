@@ -5640,3 +5640,76 @@ whatap.io.DataIOException: java.net.SocketException: Socket closed
 20250324 02:56:15 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m90[0m q1-size=1 last-recvtime=[31m14525[0m localport=[32m39280[0m pid=[32m1[0m
 20250324 02:56:15 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m q1-size=1 last-recvtime=[31m14524[0m localport=[32m58228[0m pid=[32m1[0m
 20250324 02:56:15 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m117[0m q1-size=1 last-recvtime=[31m14676[0m localport=[32m44436[0m pid=[32m1[0m
+20250324 02:56:20 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m117[0m q1-size=1 last-recvtime=[31m19483[0m localport=[32m44436[0m pid=[32m1[0m
+20250324 02:56:20 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m81[0m q1-size=1 last-recvtime=[31m19033[0m localport=[32m33360[0m pid=[32m1[0m
+20250324 02:56:20 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m99[0m q1-size=1 last-recvtime=[31m24325[0m localport=[32m47452[0m pid=[32m1[0m
+20250324 02:56:20 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m q1-size=1 last-recvtime=[31m19867[0m localport=[32m60118[0m pid=[32m1[0m
+20250324 02:56:20 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m q1-size=0 last-recvtime=[31m19847[0m localport=[32m51210[0m pid=[32m1[0m
+20250324 02:56:20 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m94[0m q1-size=1 last-recvtime=[31m19682[0m localport=[32m39344[0m pid=[32m1[0m
+20250324 02:56:20 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m104[0m q1-size=1 last-recvtime=[31m19582[0m localport=[32m50078[0m pid=[32m1[0m
+20250324 02:56:20 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m13[0m drop=[32m49238[0m q1-size=128 last-recvtime=[31m246252617[0m localport=[32m0[0m pid=[32m1[0m
+20250324 02:56:20 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m90[0m q1-size=1 last-recvtime=[31m19532[0m localport=[32m39280[0m pid=[32m1[0m
+20250324 02:56:20 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m q1-size=1 last-recvtime=[31m19532[0m localport=[32m58228[0m pid=[32m1[0m
+20250324 02:56:25 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m q1-size=1 last-recvtime=[31m24340[0m localport=[32m58228[0m pid=[32m1[0m
+20250324 02:56:25 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m117[0m q1-size=1 last-recvtime=[31m24490[0m localport=[32m44436[0m pid=[32m1[0m
+20250324 02:56:25 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m81[0m q1-size=1 last-recvtime=[31m24042[0m localport=[32m33360[0m pid=[32m1[0m
+20250324 02:56:25 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m99[0m q1-size=1 last-recvtime=[31m29332[0m localport=[32m47452[0m pid=[32m1[0m
+20250324 02:56:25 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m q1-size=1 last-recvtime=[31m24876[0m localport=[32m60118[0m pid=[32m1[0m
+20250324 02:56:25 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m q1-size=1 last-recvtime=[31m24855[0m localport=[32m51210[0m pid=[32m1[0m
+20250324 02:56:25 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m94[0m q1-size=1 last-recvtime=[31m24689[0m localport=[32m39344[0m pid=[32m1[0m
+20250324 02:56:25 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m104[0m q1-size=1 last-recvtime=[31m24589[0m localport=[32m50078[0m pid=[32m1[0m
+20250324 02:56:25 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m13[0m drop=[32m49239[0m q1-size=128 last-recvtime=[31m246257623[0m localport=[32m0[0m pid=[32m1[0m
+20250324 02:56:25 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m90[0m q1-size=1 last-recvtime=[31m24539[0m localport=[32m39280[0m pid=[32m1[0m
+20250324 02:56:25 [[32mReceiver[0m][[33mTcpSession.read(392)[0m] (TcpRead) read java.net.SocketTimeoutException: Read timed out recvtime=30025
+20250324 02:56:25 [[32mReceiver[0m][[33mTcpSession.close(49)[0m] (TcpClose) [31mThe WhaTap Connection is closed: pcode=44098 oid=-2111145907 oname=product-service-0-13[0m
+20250324 02:56:30 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m q1-size=1 last-recvtime=[31m29348[0m localport=[32m58228[0m pid=[32m1[0m
+20250324 02:56:30 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m117[0m q1-size=1 last-recvtime=[31m29498[0m localport=[32m44436[0m pid=[32m1[0m
+20250324 02:56:30 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m81[0m q1-size=0 last-recvtime=[31m29050[0m localport=[32m33360[0m pid=[32m1[0m
+20250324 02:56:30 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m99[0m q1-size=9 last-recvtime=[31m34339[0m localport=[32m47452[0m pid=[32m1[0m
+20250324 02:56:30 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m q1-size=0 last-recvtime=[31m29884[0m localport=[32m60118[0m pid=[32m1[0m
+20250324 02:56:30 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m q1-size=1 last-recvtime=[31m29863[0m localport=[32m51210[0m pid=[32m1[0m
+20250324 02:56:30 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m94[0m q1-size=1 last-recvtime=[31m29697[0m localport=[32m39344[0m pid=[32m1[0m
+20250324 02:56:30 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m104[0m q1-size=1 last-recvtime=[31m29598[0m localport=[32m50078[0m pid=[32m1[0m
+20250324 02:56:30 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m13[0m drop=[32m49240[0m q1-size=128 last-recvtime=[31m246262630[0m localport=[32m0[0m pid=[32m1[0m
+20250324 02:56:30 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m1[0m drop=[32m90[0m q1-size=1 last-recvtime=[31m29547[0m localport=[32m39280[0m pid=[32m1[0m
+20250324 02:56:30 [[32mReceiver[0m][[33mTcpSession.read(392)[0m] (TcpRead) read java.net.SocketTimeoutException: Read timed out recvtime=30004
+20250324 02:56:30 [[32mReceiver[0m][[33mTcpSession.close(49)[0m] (TcpClose) [31mThe WhaTap Connection is closed: pcode=44098 oid=1683571484 oname=product-composite-service-0-8[0m
+20250324 02:56:30 [[32mReceiver[0m][[33mTcpSession.read(392)[0m] (TcpRead) read java.net.SocketTimeoutException: Read timed out recvtime=30030
+20250324 02:56:30 [[32mReceiver[0m][[33mTcpSession.close(49)[0m] (TcpClose) [31mThe WhaTap Connection is closed: pcode=44098 oid=907126141 oname=product-composite-service-0-14[0m
+20250324 02:56:30 [[32mTcpSession[0m][[33mTcpSession.open(155)[0m] (TcpOpen) Connect timed out 13.124.11.223:6600
+20250324 02:56:30 [[32mReceiver[0m][[33mTcpSession.read(392)[0m] (TcpRead) read java.net.SocketTimeoutException: Read timed out recvtime=30031
+20250324 02:56:30 [[32mReceiver[0m][[33mTcpSession.close(49)[0m] (TcpClose) [31mThe WhaTap Connection is closed: pcode=44098 oid=1807127662 oname=recommendation-service-0-15[0m
+20250324 02:56:30 [[32mReceiver[0m][[33mTcpSession.read(392)[0m] (TcpRead) read java.net.SocketTimeoutException: Read timed out recvtime=30024
+20250324 02:56:30 [[32mReceiver[0m][[33mTcpSession.close(49)[0m] (TcpClose) [31mThe WhaTap Connection is closed: pcode=44098 oid=-1202863887 oname=review-service-0-11[0m
+20250324 02:56:30 [[32mReceiver[0m][[33mTcpSession.read(392)[0m] (TcpRead) read java.net.SocketTimeoutException: Read timed out recvtime=30011
+20250324 02:56:30 [[32mReceiver[0m][[33mTcpSession.close(49)[0m] (TcpClose) [31mThe WhaTap Connection is closed: pcode=44098 oid=-596352399 oname=recommendation-service-0-9[0m
+20250324 02:56:30 [[32mReceiver[0m][[33mTcpSession.read(392)[0m] (TcpRead) read java.net.SocketTimeoutException: Read timed out recvtime=30019
+20250324 02:56:30 [[32mReceiver[0m][[33mTcpSession.close(49)[0m] (TcpClose) [31mThe WhaTap Connection is closed: pcode=44098 oid=558141771 oname=review-service-0-12[0m
+20250324 02:56:30 [[32mReceiver[0m][[33mTcpSession.read(392)[0m] (TcpRead) read java.net.SocketTimeoutException: Read timed out recvtime=30011
+20250324 02:56:30 [[32mReceiver[0m][[33mTcpSession.close(49)[0m] (TcpClose) [31mThe WhaTap Connection is closed: pcode=44098 oid=117890372 oname=gateway-0-5[0m
+20250324 02:56:31 [[32mReceiver[0m][[33mTcpSession.read(392)[0m] (TcpRead) read java.net.SocketTimeoutException: Read timed out recvtime=30028
+20250324 02:56:31 [[32mReceiver[0m][[33mTcpSession.close(49)[0m] (TcpClose) [31mThe WhaTap Connection is closed: pcode=44098 oid=455289335 oname=product-service-0-10[0m
+20250324 02:56:33 [[32mTcpSession[0m][[33mSecurityMaster.decideAgentOnameOid(104)[0m] [31mOID: 117890372 ONAME: gateway-0-5 IP: 172.18.0.5[0m PID: 1
+20250324 02:56:33 [[32mTcpSession[0m][[33mTcpSession.open(147)[0m] (TcpOpen) [32mThe WhaTap Connection is open: 13.124.11.223:6600 pcode=44098 oid=117890372 oname=gateway-0-5[0m
+20250324 02:56:33 [[32mTcpSession[0m][[33mSecurityMaster.decideAgentOnameOid(104)[0m] [31mOID: -2111145907 ONAME: product-service-0-13 IP: 172.18.0.13[0m PID: 1
+20250324 02:56:33 [[32mTcpSession[0m][[33mTcpSession.open(147)[0m] (TcpOpen) [32mThe WhaTap Connection is open: 13.209.172.35:6600 pcode=44098 oid=-2111145907 oname=product-service-0-13[0m
+20250324 02:56:33 [[32mTcpSession[0m][[33mSecurityMaster.decideAgentOnameOid(104)[0m] [31mOID: -596352399 ONAME: recommendation-service-0-9 IP: 172.18.0.9[0m PID: 1
+20250324 02:56:33 [[32mTcpSession[0m][[33mTcpSession.open(147)[0m] (TcpOpen) [32mThe WhaTap Connection is open: 13.209.172.35:6600 pcode=44098 oid=-596352399 oname=recommendation-service-0-9[0m
+20250324 02:56:33 [[32mTcpSession[0m][[33mSecurityMaster.decideAgentOnameOid(104)[0m] [31mOID: 558141771 ONAME: review-service-0-12 IP: 172.18.0.12[0m PID: 1
+20250324 02:56:33 [[32mTcpSession[0m][[33mTcpSession.open(147)[0m] (TcpOpen) [32mThe WhaTap Connection is open: 13.124.11.223:6600 pcode=44098 oid=558141771 oname=review-service-0-12[0m
+20250324 02:56:34 [[32mTcpSession[0m][[33mSecurityMaster.decideAgentOnameOid(104)[0m] [31mOID: -1202863887 ONAME: review-service-0-11 IP: 172.18.0.11[0m PID: 1
+20250324 02:56:34 [[32mTcpSession[0m][[33mSecurityMaster.decideAgentOnameOid(104)[0m] [31mOID: 907126141 ONAME: product-composite-service-0-14 IP: 172.18.0.14[0m PID: 1
+20250324 02:56:34 [[32mTcpSession[0m][[33mTcpSession.open(147)[0m] (TcpOpen) [32mThe WhaTap Connection is open: 13.209.172.35:6600 pcode=44098 oid=-1202863887 oname=review-service-0-11[0m
+20250324 02:56:34 [[32mTcpSession[0m][[33mSecurityMaster.decideAgentOnameOid(104)[0m] [31mOID: 1683571484 ONAME: product-composite-service-0-8 IP: 172.18.0.8[0m PID: 1
+20250324 02:56:34 [[32mTcpSession[0m][[33mTcpSession.open(147)[0m] (TcpOpen) [32mThe WhaTap Connection is open: 13.209.172.35:6600 pcode=44098 oid=907126141 oname=product-composite-service-0-14[0m
+20250324 02:56:34 [[32mTcpSession[0m][[33mTcpSession.open(147)[0m] (TcpOpen) [32mThe WhaTap Connection is open: 13.124.11.223:6600 pcode=44098 oid=1683571484 oname=product-composite-service-0-8[0m
+20250324 02:56:34 [[32mTcpSession[0m][[33mSecurityMaster.decideAgentOnameOid(104)[0m] [31mOID: 1807127662 ONAME: recommendation-service-0-15 IP: 172.18.0.15[0m PID: 1
+20250324 02:56:34 [[32mTcpSession[0m][[33mSecurityMaster.decideAgentOnameOid(104)[0m] [31mOID: 455289335 ONAME: product-service-0-10 IP: 172.18.0.10[0m PID: 1
+20250324 02:56:34 [[32mTcpSession[0m][[33mTcpSession.open(147)[0m] (TcpOpen) [32mThe WhaTap Connection is open: 13.209.172.35:6600 pcode=44098 oid=1807127662 oname=recommendation-service-0-15[0m
+20250324 02:56:34 [[32mTcpSession[0m][[33mTcpSession.open(147)[0m] (TcpOpen) [32mThe WhaTap Connection is open: 13.124.11.223:6600 pcode=44098 oid=455289335 oname=product-service-0-10[0m
+20250324 02:56:35 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m13[0m drop=[32m49241[0m q1-size=128 last-recvtime=[31m246267639[0m localport=[32m0[0m pid=[32m1[0m
+20250324 02:56:40 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m13[0m drop=[32m49242[0m q1-size=128 last-recvtime=[31m246272646[0m localport=[32m0[0m pid=[32m1[0m
+20250324 02:56:45 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m13[0m drop=[32m49243[0m q1-size=128 last-recvtime=[31m246277653[0m localport=[32m0[0m pid=[32m1[0m
+20250324 02:56:50 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m13[0m drop=[32m49244[0m q1-size=128 last-recvtime=[31m246282659[0m localport=[32m0[0m pid=[32m1[0m
+20250324 02:56:55 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m13[0m drop=[32m49245[0m q1-size=128 last-recvtime=[31m246287466[0m localport=[32m0[0m pid=[32m1[0m
+20250324 02:57:00 [[32mCountCollectorThread[0m][[33mCountCollector.warning(215)[0m] [+] id=[31mWARNING[0m wait=[31m13[0m drop=[32m49246[0m q1-size=128 last-recvtime=[31m246292474[0m localport=[32m0[0m pid=[32m1[0m
