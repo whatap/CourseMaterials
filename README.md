@@ -84,7 +84,7 @@ docker-compose build
     ```
   * add options in whatap.conf
     ```
-    trace_normalize_urls=/product-composite/{productId}
+    trace_normalize_urls=/product-composite/{productId},/product/{productId}
     ```
 
 ### Distribution Tracing
