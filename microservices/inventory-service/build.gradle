@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group = 'se.magnus.microservices.core.review'
+group = 'se.magnus.microservices.core.inventory'
 version = '1.0.0-SNAPSHOT'
 sourceCompatibility = '1.8'
 
@@ -26,11 +26,10 @@ dependencies {
     implementation project(':util')
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
     implementation 'org.springframework.cloud:spring-cloud-starter-stream-rabbit'
     implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    implementation 'mysql:mysql-connector-java'
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
 
     compileOnly "org.mapstruct:mapstruct-processor:${mapstructVersion}"
@@ -43,7 +42,7 @@ dependencies {
     implementation platform('org.testcontainers:testcontainers-bom:1.19.7')
     testImplementation 'org.testcontainers:testcontainers:1.19.7'
     testImplementation 'org.testcontainers:junit-jupiter:1.19.7'
-    testImplementation 'org.testcontainers:mysql:1.19.7'
+    testImplementation 'org.testcontainers:mongodb:1.19.7'
 }
 
 dependencyManagement {

@@ -1,32 +1,33 @@
-# CourseMaterials
-3/27 WhaTap Academy course materials
 
-## Prerequisites
-* Java
-* docker-compose
+# Sample Application for WhaTap Monitoring
 
-## Build
-```bash
-./gradlew build
-docker-compose build
-```
+This example creates a spring-boot application including Gateway, Eureka, and 4 microservices (product-composite, product, recommendation, review).
 
-## Install WhaTap agent
-1. Create whatap java application project
-   * https://service.whatap.io  
-2. Run Docker Compose with whatap agents
-   * Before running, please review the contents of docker-compose-whatap-1.yml and the the configuration in whatap.conf.
+## Usage
+
+1. Build
+    ```bash
+    ./gradlew clean build -x test
+    ```
+2. Run docker-compose
     ```bash
     docker-compose -f ./docker-compose-whatap-1.yml up -d
     ```
-3. Requests are generated using test-em-all.bash.
+3. Requests are generated using stress-test.sh.
+    ```bash
+    chmod +x stress-test.sh
+    ./stress-test.sh 5 0.5
+    ```
+    * Or use the original legacy script:
     ```bash
     nohup `while true; do ./test-em-all.bash; sleep 0.3; done` &
     ```
+
 4. Monitor the WhaTap Dashboard
    ```bash
    docker-compose -f ./docker-compose-whatap-1.yml scale product-composite=3
    ```
+
 ## Practice Steps
 
 ### Agent Naming
@@ -40,6 +41,7 @@ docker-compose build
     docker-compose -f ./docker-compose-whatap-2.yml scale gateway=1
     docker-compose -f ./docker-compose-whatap-2.yml scale product-composite=5
     ```
+
 ### Gray Area
   * https://docs.whatap.io/en/java/agent-weaving
   * https://docs.whatap.io/en/java/trs-profile#additional-options
@@ -47,54 +49,6 @@ docker-compose build
   * add options in whatap.conf
     ```
     weaving=spring-boot-2.5
-    ```
-  * restart services
-  * add options in whatap.conf
-    ```
-    profile_sql_param_enabled=true
-    profile_http_parameter_enabled=true
-    ```
-### Apdex
-  * View the dashboard, Metrics and Alert
-  * add options in whatap.conf
-    ```
-    apdex_time=10
-    ```
-  * modify in whatap.conf
-    ```
-    apdex_time=200
-    ```
-
-### Data cleansing
-  * https://docs.whatap.io/en/java/trs-view#java-agent-exception
-  * https://docs.whatap.io/en/java/track-transactions-intro#normalizing-the-transaction-name
-  * check with hitmap and statistics
-  * add options in whatap.conf
-    ```
-    status_ignore=404,422,400
-    httpc_status_ignore=404,422,400
-    ```
-  * add options in whatap.conf
-    ```
-    ignore_exceptions=org.springframework.web.server.ServerWebInputException
-    ```
-  * add options in whatap.conf
-    ```
-    trace_ignore_url_set=/actuator/health
-    ```
-  * add options in whatap.conf
-    ```
-    trace_normalize_urls=/product-composite/{productId},/product/{productId}
-    ```
-
-### Distribution Tracing
-  * https://docs.whatap.io/en/java/agent-transaction#multiple-transaction-trace
-  * https://docs.whatap.io/en/java/analysis-msa
-  * check with hitmap drag and MSA Analysis
-  * add options in whatap.conf
-    ```
-    mtrace_auto_enabled=false
-    mtrace_rate=100
     ```
 
 ### With the Log
@@ -113,4 +67,8 @@ docker-compose build
     2025-03-21 08:31:51.001 DEBUG 1 --- [or-http-epoll-1] o.s.c.g.h.RoutePredicateHandlerMapping   : Mapping [Exchange: GET http://localhost:8080/product-composite/1] to Route{id='product-composite', uri=lb://product-composite, order=0, predicate=Paths: [/product-composite/**], match trailing slash: true, gatewayFilters=[], metadata={}}
     ```
 
-
+### Inventory Service & Trace Depth
+  * **New Service Added**: `inventory-service` (Port 7004)
+  * **Call Chain**: `Product Composite` -> `Product Service` -> `Inventory Service`
+  * **Goal**: Observe the distributed tracing and call depth in WhaTap Hitmap/Trace view.
+  * **Latency**: Both `product-service` and `inventory-service` have random sleep logic to simulate production latency variation.
