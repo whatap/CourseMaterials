@@ -1,0 +1,7 @@
+# Whatap APM/모니터링을 단일 CR로 활성화한다.
+# 적용:   kubectl apply -k deploy/k8s/whatap/
+# 제거:   kubectl delete -k deploy/k8s/whatap/
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - whatap-agent.yaml
