@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - namespace.yaml
+  - env-configmap.yaml
+  - infra/mongodb.yaml
+  - infra/mysql.yaml
+  - infra/zookeeper.yaml
+  - infra/kafka.yaml
+  - platform/eureka.yaml
+  - platform/gateway.yaml
+  - platform/ingress.yaml
+  - services/product.yaml
+  - services/recommendation.yaml
+  - services/review.yaml
+  - services/inventory.yaml
+  - services/product-composite.yaml

@@ -72,3 +72,24 @@ This example creates a spring-boot application including Gateway, Eureka, and 4 
   * **Call Chain**: `Product Composite` -> `Product Service` -> `Inventory Service`
   * **Goal**: Observe the distributed tracing and call depth in WhaTap Hitmap/Trace view.
   * **Latency**: Both `product-service` and `inventory-service` have random sleep logic to simulate production latency variation.
+
+## Kubernetes Deployment (Optional)
+
+Kustomize-based manifests are available under `deploy/k8s/`. Both docker-compose
+and Kubernetes share the same Dockerfile, image tag, and Spring `docker` profile.
+
+### Quick Start
+
+Prerequisites: kubectl context pointing to your cluster, MetalLB, ingress-nginx,
+and a default StorageClass. See [`deploy/k8s/README.md`](deploy/k8s/README.md) for setup.
+
+```bash
+make build-images push-images
+kubectl create namespace coursematerials
+kubectl -n coursematerials create secret generic coursematerials-secret \
+  --from-literal=SPRING_DATASOURCE_PASSWORD='<MYSQL_ROOT_PW>'
+kubectl apply -k deploy/k8s/overlays/local
+kubectl -n coursematerials get pods -w
+```
+
+Access: `http://course.192-168-2-200.nip.io/product-composite/1`

@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# K8s secrets — never commit
+deploy/k8s/**/secret.yaml
+deploy/k8s/**/*.secret.yaml
