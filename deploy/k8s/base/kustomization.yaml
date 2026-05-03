@@ -15,3 +15,5 @@ resources:
   - services/review.yaml
   - services/inventory.yaml
   - services/product-composite.yaml
+  - load-test/configmap.yaml
+  - load-test/deployment.yaml

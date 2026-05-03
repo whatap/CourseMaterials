@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k6-traffic
+  labels:
+    app: k6-traffic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k6-traffic
+  template:
+    metadata:
+      labels:
+        app: k6-traffic
+    spec:
+      containers:
+        - name: k6
+          image: grafana/k6:0.55.0
+          args: ["run", "--no-summary", "/scripts/load-test.js"]
+          env:
+            - name: BASE_URL
+              value: "http://gateway:8080"
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "200m"
+              memory: "128Mi"
+          volumeMounts:
+            - name: k6-script
+              mountPath: /scripts
+      volumes:
+        - name: k6-script
+          configMap:
+            name: k6-script

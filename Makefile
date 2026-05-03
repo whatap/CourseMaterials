@@ -5,7 +5,7 @@ PLATFORM     ?= linux/amd64
 APPS         := product recommendation review inventory product-composite
 SPRING_CLOUD := eureka gateway
 
-.PHONY: help build-jar build-images push-images compose-up compose-down k8s-apply k8s-delete k8s-status
+.PHONY: help build-jar build-images push-images compose-up compose-down k8s-apply k8s-delete k8s-status k6-start k6-stop k6-logs
 
 help:
 	@echo "build-jar       Gradle build (no tests)"
@@ -42,3 +42,13 @@ k8s-delete:
 	kubectl delete -k deploy/k8s/overlays/local --ignore-not-found
 k8s-status:
 	kubectl -n coursematerials get pods,svc,ingress
+
+k6-start:
+	kubectl -n coursematerials apply -f deploy/k8s/base/load-test/configmap.yaml
+	kubectl -n coursematerials apply -f deploy/k8s/base/load-test/deployment.yaml
+
+k6-stop:
+	kubectl -n coursematerials scale deployment k6-traffic --replicas=0
+
+k6-logs:
+	kubectl -n coursematerials logs -f -l app=k6-traffic --tail=50

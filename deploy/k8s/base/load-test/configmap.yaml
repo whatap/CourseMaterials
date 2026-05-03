@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: k6-script
+data:
+  load-test.js: |
+    import http from 'k6/http';
+    import { check, sleep } from 'k6';
+
+    export const options = {
+      scenarios: {
+        steady_traffic: {
+          executor: 'constant-vus',
+          vus: 3,
+          duration: '999h',
+        },
+      },
+    };
+
+    const BASE_URL = __ENV.BASE_URL || 'http://gateway:8080';
+
+    export default function () {
+      const id  = Math.floor(Math.random() * 1000) + 1;
+      const res = http.get(`${BASE_URL}/product-composite/${id}`);
+      check(res, { 'status 200': (r) => r.status === 200 });
+      sleep(1);
+    }
