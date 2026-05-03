@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: coursematerials-env
 data:
-  SPRING_PROFILES_ACTIVE: docker
+  SPRING_PROFILES_ACTIVE: docker,streaming_partitioned,streaming_instance_0,kafka
   EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka
   EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"
   EUREKA_SERVER_ENABLE_SELF_PRESERVATION: "false"
