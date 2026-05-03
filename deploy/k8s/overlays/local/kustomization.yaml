@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: coursematerials
+resources:
+  - ../../base
+images:
+  - name: jinronara/coursematerials-product
+    newTag: "0.1"
+  - name: jinronara/coursematerials-recommendation
+    newTag: "0.1"
+  - name: jinronara/coursematerials-review
+    newTag: "0.1"
+  - name: jinronara/coursematerials-inventory
+    newTag: "0.1"
+  - name: jinronara/coursematerials-product-composite
+    newTag: "0.1"
+  - name: jinronara/coursematerials-eureka
+    newTag: "0.1"
+  - name: jinronara/coursematerials-gateway
+    newTag: "0.1"
