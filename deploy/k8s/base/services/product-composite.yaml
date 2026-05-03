@@ -21,6 +21,7 @@ spec:
       containers:
         - name: product-composite
           image: jinronara/coursematerials-product-composite:0.1
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           envFrom:
@@ -32,10 +33,10 @@ spec:
           resources:
             requests:
               cpu: "100m"
-              memory: "384Mi"
+              memory: "512Mi"
             limits:
-              cpu: "1"
-              memory: "768Mi"
+              cpu: "4"
+              memory: "1Gi"
           startupProbe:
             httpGet:
               path: /actuator/health

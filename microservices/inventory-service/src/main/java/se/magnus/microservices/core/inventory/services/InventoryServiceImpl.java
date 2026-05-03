@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
-import java.util.concurrent.ThreadLocalRandom;
 import se.magnus.api.core.inventory.Inventory;
 import se.magnus.api.core.inventory.InventoryService;
 import se.magnus.api.exceptions.InvalidInputException;
@@ -66,18 +64,6 @@ public class InventoryServiceImpl implements InventoryService {
     return repository.findByInventoryId(inventoryId)
       .switchIfEmpty(Mono.error(new NotFoundException("No inventory found for inventoryId: " + inventoryId)))
       .log(LOG.getName(), FINE)
-      .publishOn(Schedulers.boundedElastic())
-      .map(entity -> {
-           int sleepTime = ThreadLocalRandom.current().nextInt(10, 3001);
-           try {
-               Thread.sleep(sleepTime);
-           } catch (InterruptedException ex) {
-               Thread.currentThread().interrupt();
-               LOG.error("Sleep was interrupted", ex);
-           }
-           LOG.info("Slept for {} ms", sleepTime);
-           return entity;
-      })
       .map(e -> mapper.entityToApi(e))
       .map(e -> setServiceAddress(e));
   }

@@ -20,6 +20,7 @@ data:
     trace_ignore_url_set=/actuator/health
     async_stack_enabled=true
     weaving=spring-boot-2.5,kafka-clients-2.4.0,mongodb-4.0,logback-1.2.8
+    mtraceable_user_agent=k6/0.55.0 (https://k6.io/)
 ---
 apiVersion: monitoring.whatap.com/v2alpha1
 kind: WhatapAgent
