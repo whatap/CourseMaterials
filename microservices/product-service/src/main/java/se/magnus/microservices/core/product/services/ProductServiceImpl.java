@@ -9,8 +9,6 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
-import java.util.concurrent.ThreadLocalRandom;
 import se.magnus.api.core.product.Product;
 import se.magnus.api.core.product.ProductService;
 import se.magnus.api.exceptions.InvalidInputException;
@@ -71,18 +69,6 @@ public class ProductServiceImpl implements ProductService {
     return repository.findByProductId(productId)
         .switchIfEmpty(Mono.error(new NotFoundException("No product found for productId: " + productId)))
         .log(LOG.getName(), FINE)
-        .publishOn(Schedulers.boundedElastic())
-        .map(entity -> {
-          int sleepTime = ThreadLocalRandom.current().nextInt(10, 100);
-          try {
-            Thread.sleep(sleepTime);
-          } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-            LOG.error("Sleep was interrupted", ex);
-          }
-          LOG.info("Slept for {} ms", sleepTime);
-          return entity;
-        })
         .map(e -> mapper.entityToApi(e))
         .flatMap(product -> {
           // Call inventory service for deep tracing

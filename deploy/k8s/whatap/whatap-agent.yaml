@@ -14,7 +14,7 @@ data:
     whatap.server.host=13.124.11.223/13.209.172.35
     whatap.micro.enabled=true
     logsink_enabled=true
-    mtrace_rate=10
+    mtrace_enabled=true
     profile_http_parameter_enabled=true
     profile_sql_param_enabled=true
     trace_ignore_url_set=/actuator/health
@@ -51,14 +51,17 @@ spec:
             namespaceSelector: &ns { matchNames: [coursematerials] }
             podSelector: { matchLabels: { app: product } }
             config: &cfg { mode: custom, configMapRef: { name: whatap-apm-conf } }
-            envs: &okindOnly
+            # JDK_JAVA_OPTIONS: Java 9+ 만 인식(8 은 무시 → 호환), webhook 의 JAVA_TOOL_OPTIONS
+            # 자동 inject 와 충돌 없음. WebClient/RestTemplate weaving 의 AddNewClass 초기화에 필요.
+            envs:
               - { name: OKIND,     value: product }
               - { name: NODE_IP,   valueFrom: { fieldRef: { fieldPath: status.hostIP } } }
               - { name: NODE_NAME, valueFrom: { fieldRef: { fieldPath: spec.nodeName } } }
               - { name: POD_NAME,  valueFrom: { fieldRef: { fieldPath: metadata.name } } }
-          - { name: recommendation,    enabled: true, language: java, namespaceSelector: *ns, podSelector: { matchLabels: { app: recommendation    } }, config: *cfg, envs: [{ name: OKIND, value: recommendation    }, { name: NODE_IP, valueFrom: { fieldRef: { fieldPath: status.hostIP } } }, { name: NODE_NAME, valueFrom: { fieldRef: { fieldPath: spec.nodeName } } }, { name: POD_NAME, valueFrom: { fieldRef: { fieldPath: metadata.name } } }] }
-          - { name: review,            enabled: true, language: java, namespaceSelector: *ns, podSelector: { matchLabels: { app: review            } }, config: *cfg, envs: [{ name: OKIND, value: review            }, { name: NODE_IP, valueFrom: { fieldRef: { fieldPath: status.hostIP } } }, { name: NODE_NAME, valueFrom: { fieldRef: { fieldPath: spec.nodeName } } }, { name: POD_NAME, valueFrom: { fieldRef: { fieldPath: metadata.name } } }] }
-          - { name: inventory,         enabled: true, language: java, namespaceSelector: *ns, podSelector: { matchLabels: { app: inventory         } }, config: *cfg, envs: [{ name: OKIND, value: inventory         }, { name: NODE_IP, valueFrom: { fieldRef: { fieldPath: status.hostIP } } }, { name: NODE_NAME, valueFrom: { fieldRef: { fieldPath: spec.nodeName } } }, { name: POD_NAME, valueFrom: { fieldRef: { fieldPath: metadata.name } } }] }
-          - { name: product-composite, enabled: true, language: java, namespaceSelector: *ns, podSelector: { matchLabels: { app: product-composite } }, config: *cfg, envs: [{ name: OKIND, value: product-composite }, { name: NODE_IP, valueFrom: { fieldRef: { fieldPath: status.hostIP } } }, { name: NODE_NAME, valueFrom: { fieldRef: { fieldPath: spec.nodeName } } }, { name: POD_NAME, valueFrom: { fieldRef: { fieldPath: metadata.name } } }] }
-          - { name: eureka,            enabled: true, language: java, namespaceSelector: *ns, podSelector: { matchLabels: { app: eureka            } }, config: *cfg, envs: [{ name: OKIND, value: eureka            }, { name: NODE_IP, valueFrom: { fieldRef: { fieldPath: status.hostIP } } }, { name: NODE_NAME, valueFrom: { fieldRef: { fieldPath: spec.nodeName } } }, { name: POD_NAME, valueFrom: { fieldRef: { fieldPath: metadata.name } } }] }
-          - { name: gateway,           enabled: true, language: java, namespaceSelector: *ns, podSelector: { matchLabels: { app: gateway           } }, config: *cfg, envs: [{ name: OKIND, value: gateway           }, { name: NODE_IP, valueFrom: { fieldRef: { fieldPath: status.hostIP } } }, { name: NODE_NAME, valueFrom: { fieldRef: { fieldPath: spec.nodeName } } }, { name: POD_NAME, valueFrom: { fieldRef: { fieldPath: metadata.name } } }] }
+              - &jdkOpts { name: JDK_JAVA_OPTIONS, value: --add-opens=java.base/java.lang=ALL-UNNAMED }
+          - { name: recommendation,    enabled: true, language: java, namespaceSelector: *ns, podSelector: { matchLabels: { app: recommendation    } }, config: *cfg, envs: [{ name: OKIND, value: recommendation    }, { name: NODE_IP, valueFrom: { fieldRef: { fieldPath: status.hostIP } } }, { name: NODE_NAME, valueFrom: { fieldRef: { fieldPath: spec.nodeName } } }, { name: POD_NAME, valueFrom: { fieldRef: { fieldPath: metadata.name } } }, *jdkOpts] }
+          - { name: review,            enabled: true, language: java, namespaceSelector: *ns, podSelector: { matchLabels: { app: review            } }, config: *cfg, envs: [{ name: OKIND, value: review            }, { name: NODE_IP, valueFrom: { fieldRef: { fieldPath: status.hostIP } } }, { name: NODE_NAME, valueFrom: { fieldRef: { fieldPath: spec.nodeName } } }, { name: POD_NAME, valueFrom: { fieldRef: { fieldPath: metadata.name } } }, *jdkOpts] }
+          - { name: inventory,         enabled: true, language: java, namespaceSelector: *ns, podSelector: { matchLabels: { app: inventory         } }, config: *cfg, envs: [{ name: OKIND, value: inventory         }, { name: NODE_IP, valueFrom: { fieldRef: { fieldPath: status.hostIP } } }, { name: NODE_NAME, valueFrom: { fieldRef: { fieldPath: spec.nodeName } } }, { name: POD_NAME, valueFrom: { fieldRef: { fieldPath: metadata.name } } }, *jdkOpts] }
+          - { name: product-composite, enabled: true, language: java, namespaceSelector: *ns, podSelector: { matchLabels: { app: product-composite } }, config: *cfg, envs: [{ name: OKIND, value: product-composite }, { name: NODE_IP, valueFrom: { fieldRef: { fieldPath: status.hostIP } } }, { name: NODE_NAME, valueFrom: { fieldRef: { fieldPath: spec.nodeName } } }, { name: POD_NAME, valueFrom: { fieldRef: { fieldPath: metadata.name } } }, *jdkOpts] }
+          - { name: eureka,            enabled: true, language: java, namespaceSelector: *ns, podSelector: { matchLabels: { app: eureka            } }, config: *cfg, envs: [{ name: OKIND, value: eureka            }, { name: NODE_IP, valueFrom: { fieldRef: { fieldPath: status.hostIP } } }, { name: NODE_NAME, valueFrom: { fieldRef: { fieldPath: spec.nodeName } } }, { name: POD_NAME, valueFrom: { fieldRef: { fieldPath: metadata.name } } }, *jdkOpts] }
+          - { name: gateway,           enabled: true, language: java, namespaceSelector: *ns, podSelector: { matchLabels: { app: gateway           } }, config: *cfg, envs: [{ name: OKIND, value: gateway           }, { name: NODE_IP, valueFrom: { fieldRef: { fieldPath: status.hostIP } } }, { name: NODE_NAME, valueFrom: { fieldRef: { fieldPath: spec.nodeName } } }, { name: POD_NAME, valueFrom: { fieldRef: { fieldPath: metadata.name } } }, *jdkOpts] }
